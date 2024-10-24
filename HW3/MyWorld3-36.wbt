@@ -1,0 +1,138 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.16514467812141584 -0.45610775616892635 0.8744672378372567 5.498082209791479
+  position -1.2677083888805591 1.028252635942173 0.8253663857689274
+}
+TexturedBackground {
+  texture "noon_building_overcast"
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorAppearance Parquetry {
+    type "light strip"
+  }
+}
+Robot {
+  translation -0.0649811 -7.97028e-07 0.455973
+  rotation 0.5773512691895147 -0.5773492691885823 -0.5773502691890485 -2.094395307179586
+  children [
+    Transform {
+      translation 0.2 0 0
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.513726 0.513726 0.772549
+            roughness 1
+            textureTransform TextureTransform {
+            }
+          }
+          geometry Box {
+            size 0.5 0.1 0.1
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 8.929911765129149e-08
+        axis 0 0 1
+        anchor 0 0 0.1
+      }
+      device [
+        RotationalMotor {
+          name "rotational_motor1"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.1
+        rotation 0 0 1 8.940696716308595e-08
+        children [
+          SliderJoint {
+            jointParameters JointParameters {
+              position 4.75057524918217e-12
+              axis 0 1 0
+              minStop -0.1
+              maxStop 0.11
+            }
+            device [
+              LinearMotor {
+                name "linear_motor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 4.75057524918217e-12 0.075
+              rotation 1 0 0 4.6928e-06
+              children [
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    position 8.929896380991478e-08
+                    axis 0 1 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "rotational_motor2"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 4.6568735028765917e-07 -0.1800005342752573 2.6671337176634627e-07
+                    rotation 0.003540716671778912 -0.9999917033152869 0.0020141067601987545 4.600382091155463e-06
+                    children [
+                      DEF axle3 Shape {
+                        appearance PBRAppearance {
+                          baseColor 0.666667 0.666667 1
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Box {
+                          size 0.02 0.05 0.01
+                        }
+                      }
+                    ]
+                    boundingObject USE axle3
+                    physics Physics {
+                    }
+                  }
+                }
+                DEF axle2 Shape {
+                  appearance PBRAppearance {
+                    baseColor 0.294118 0.294118 0.443137
+                    roughness 1
+                    metalness 0.8
+                  }
+                  geometry Box {
+                    size 0.05 0.3 0.04
+                  }
+                }
+              ]
+              physics Physics {
+              }
+            }
+          }
+          DEF axle1 Shape {
+            appearance PBRAppearance {
+              baseColor 0.576471 0.576471 0.862745
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.04 0.03 0.3
+            }
+          }
+        ]
+        boundingObject USE axle1
+        physics Physics {
+        }
+      }
+    }
+  ]
+  controller "my_controller3-36"
+}
